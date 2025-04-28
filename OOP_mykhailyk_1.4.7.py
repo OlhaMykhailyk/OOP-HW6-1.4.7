@@ -17,7 +17,7 @@ class Calculator:
         if var in self.variables:
             self.variables[var] = value
         else:
-            print("error - variable {var} is bad")
+            print(f"error - variable {var} is bad")
     def all_variables_set(self):
         return all(value is not None for value in self.variables.values())
     def evaluate(self):
@@ -31,4 +31,15 @@ class Calculator:
         except Exception as e:
             raise ValueError(f"Помилка обчислення: {e}")
 
+if __name__ == '__main__':
+    calc = Calculator()
+    calc.set_expression("a+b*c")
+    print(calc.get_variables())
+
+    calc.set_variable_value('a', 2)
+    calc.set_variable_value('b', 3)
+    calc.set_variable_value('c', 4)
+
+    result = calc.evaluate()
+    print(result)  # 2 + 3 * 4 = 2 + 12 = 14
 
